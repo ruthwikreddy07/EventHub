@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event District</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="left">
+      <img src="images/Eventhub-logo-sq-1920x1920.jpg" alt="EventHub Logo" class="logo" />
+      <h2>EVENT HUB</h2>
+      <div class="location">
+        📍 <span>Hyderabad, Telangana</span>
+      </div>
+      <ul class="nav-links">
+        <li class="active">For You</li>
+        <li>Events</li>
+        <li>Movies</li>
+        <li>Activities</li>
+      </ul>
+    </div>
+    <div class="right">
+      <input type="text" placeholder="Search for events, movies and restaurants" class="search" />
+      <div class="profile-icon">👤</div>
+    </div>
+  </nav>
+<section class="hero">
+  <div class="hero-overlay">
+    <h4>Welcome To Your</h4>
+    <h1>EVENT HUB</h1>
+  </div>
+</section>
+
+
+  <section class="section">
+    <h2>Top Telugu Movies Near You</h2>
+    <div class="slider-wrapper">
+  <button class="slider-btn left" onclick="scrollSlider('left', 'movieSlider')">◀</button>
+  <div class="slider" id="movieSlider">
+    <div class="movie-card">
+      <img src="images/Mahavatar-Narshima-78b804c0-6ac6-11f0-9ded-fbdcba2fe81e.avif" alt="Movie 1"/>
+      <h3>Mahavatar Narsimha</h3>
+      <p>UA13+ | Telugu and 1 more</p>
+    </div>
+    <div class="movie-card">
+      <img src="images/HHVM-9a2abdd0-6712-11f0-b49e-0daac2dae3b7.avif" alt="Movie 2"/>
+      <h3>Hari Hara Veera Mallu</h3>
+      <p>UA16+ | Telugu</p>
+    </div>
+    <div class="movie-card">
+      <img src="images/Junior-30cf3520-60ad-11f0-955e-b3a7ddd74d55.avif" alt="Movie 3"/>
+      <h3>Junior</h3>
+      <p>UA13+ | Telugu</p>
+    </div>
+    <div class="movie-card">
+      <img src="images/Gruham-b0bcc630-d88b-11ef-9fc7-11acfaa00735.avif" alt="Movie 4"/>
+      <h3>Gruham (2017)</h3>
+      <p>A | Telugu</p>
+    </div>
+  </div>
+  <button class="slider-btn right" onclick="scrollSlider('right', 'movieSlider')">▶</button>
+</div>
+
+  </section>
+
+ <section class="section">
+  <h2>Discover the Best of Music Events</h2>
+  <div class="slider-wrapper">
+    <button class="slider-btn left" onclick="scrollSlider('left')">◀</button>
+
+    <div class="slider" id="eventSlider">
+      <div class="card">
+        <img src="images/image.png" alt="Event 1" />
+        <h3>RITVIZ Live at Quake Arena</h3>
+        <p>2 Aug, 8PM • ₹999 onwards • Hyderabad</p>
+      </div>
+      <div class="card">
+        <img src="images/Screenshot 2025-07-28 191116.png" alt="Event 2" />
+        <h3>Echoes of Earth, 2025</h3>
+        <p>13–14 Dec, 1PM • ₹6499 • Bengaluru</p>
+      </div>
+      <div class="card">
+        <img src="images/Screenshot 2025-07-28 191219.png" alt="Event 3" />
+        <h3>Enrique Iglesias - Live in Concert</h3>
+        <p>29 Oct, 6:30PM • ₹5000 onwards • Mumbai</p>
+      </div>
+      <div class="card">
+        <img src="images/Screenshot 2025-07-28 191330.png" alt="Event 4" />
+        <h3>Pattikaada Pattinama - Tamil Singalong</h3>
+        <p>24 Aug, 2:30PM • ₹499 • Hyderabad</p>
+      </div>
+      <div class="card">
+        <img src="images/Screenshot 2025-07-28 195103.png" alt="Event 5" />
+        <h3>Malavika Live</h3>
+        <p>2 Aug, 7PM • ₹999 • Hyderabad</p>
+      </div>
+    </div>
+
+    <button class="slider-btn right" onclick="scrollSlider('right')">▶</button>
+  </div>
+</section>
+
+
+  <section class="section">
+    <h2>Happening This Week</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>The Kidz Land - Playzone</h3>
+        <p>28 Jul – 28 Aug • ₹999 onwards • Hyderabad</p>
+      </div>
+      <div class="card">
+        <h3>V PLAY Arcade Gaming | Suchitra</h3>
+        <p>28 Jul – 28 Aug • ₹500 • Hyderabad</p>
+      </div>
+      <div class="card">
+        <h3>Sim and Sam’s Party & Playtown</h3>
+        <p>28 Jul – 28 Aug • ₹500 onwards • Secunderabad</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Best in Comedy</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Rupali Tyagi Live</h3>
+        <p>3 Aug, 7:30PM • ₹499 • Hyderabad</p>
+      </div>
+      <div class="card">
+        <h3>Jo Hai Show Hai - Standup by Dakshit Mathur</h3>
+        <p>23 Aug, 5PM • ₹200 • Hyderabad</p>
+      </div>
+      <div class="card">
+        <h3>Be Anything - Improv Workshop</h3>
+        <p>2 Aug, 11AM • ₹699 • Aaromalé</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Event District. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
