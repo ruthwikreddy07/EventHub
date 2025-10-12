@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EventService {
-  private apiUrl = 'http://localhost:5000/api/events';
+  private apiUrl = 'https://eventhub-api-jrti.onrender.com/api/events';
 
   constructor(private http: HttpClient) {}
 

@@ -5,16 +5,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root'
 })
 export class AnalyticsService {
-  private apiUrl = 'http://localhost:5000/api/analytics';
+  private apiUrl = 'https://eventhub-api-jrti.onrender.com/api'; // FIX IS HERE: added /api
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  // Method to get the summary data from the backend
-  getSummary(): Observable<any> {
-    // The authInterceptor will automatically add the admin token
-    return this.http.get(`${this.apiUrl}/summary`);
-  }
+  // Method to get the summary data from the backend
+  getSummary(): Observable<any> {
+    // Correctly constructs: https://eventhub-api-jrti.onrender.com/api/summary
+    return this.http.get(`${this.apiUrl}/summary`);
+  }
 }
