@@ -1,0 +1,125 @@
+$primary: #4a90e2;
+$secondary: #6c63ff;
+$text-dark: #2b2d42;
+$light-bg: #f8f9fc;
+$card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+$border-radius: 12px;
+
+.details-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: $card-shadow;
+  font-family: "Poppins", sans-serif;
+  color: $text-dark;
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: $primary;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s;
+
+    &:hover {
+      text-decoration: underline;
+      color: $secondary;
+    }
+  }
+
+  .event-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: $border-radius;
+    margin-bottom: 2rem;
+    box-shadow: $card-shadow;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .event-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    p {
+      flex: 1 1 45%;
+      font-size: 1rem;
+      strong {
+        color: $primary;
+      }
+    }
+  }
+
+  .event-description {
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.5rem;
+      color: $secondary;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: $text-dark;
+    }
+  }
+
+  .book-button {
+    display: inline-block;
+    background: linear-gradient(135deg, $primary, $secondary);
+    color: white;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: $border-radius;
+    text-decoration: none;
+    box-shadow: $card-shadow;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+  }
+
+  ng-template {
+    p {
+      font-size: 1.1rem;
+      color: gray;
+      text-align: center;
+      margin-top: 2rem;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .details-container {
+    padding: 1.5rem;
+
+    .event-info {
+      flex-direction: column;
+
+      p {
+        flex: 1 1 100%;
+      }
+    }
+
+    .book-button {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

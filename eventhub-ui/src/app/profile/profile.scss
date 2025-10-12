@@ -1,0 +1,97 @@
+$primary-color: #4a90e2;
+$secondary-color: #ffffff;
+$background-color: #f5f7fa;
+$card-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+.profile-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+
+  h1 {
+    text-align: center;
+    color: $primary-color;
+    margin-bottom: 2rem;
+  }
+
+  .loading,
+  .empty-state {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+
+    .find-events-button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: $primary-color;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: all 0.3s;
+
+      &:hover {
+        background: color.adjust($primary-color, $lightness: -10%);
+      }
+    }
+  }
+
+  .bookings-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+
+    .booking-card {
+      display: flex;
+      flex-direction: column;
+      background: $secondary-color;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: $card-shadow;
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .event-image {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .booking-details {
+        padding: 1rem;
+
+        h2 {
+          font-size: 1.25rem;
+          margin-bottom: 0.5rem;
+          color: $primary-color;
+        }
+
+        p {
+          margin: 0.25rem 0;
+          color: #555;
+
+          &.e-pass-info {
+            margin-top: 1rem;
+            font-style: italic;
+            color: #888;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .bookings-list {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-card .booking-details {
+    padding: 0.75rem;
+  }
+}

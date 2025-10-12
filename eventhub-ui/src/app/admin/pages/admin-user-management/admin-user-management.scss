@@ -1,0 +1,121 @@
+// Theme colors
+$primary: #4a90e2;
+$secondary: #6c63ff;
+$danger: #ff4b5c;
+$success: #00b09b;
+$light-bg: #f8f9fc;
+$text-dark: #2b2d42;
+$border-color: #e0e0e0;
+$shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+.admin-page-container {
+  padding: 2rem 3rem;
+  background: $light-bg;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: $text-dark;
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $secondary;
+    margin-bottom: 2rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    box-shadow: $shadow;
+    overflow: hidden;
+
+    thead {
+      background: $secondary;
+      color: white;
+
+      th {
+        text-align: left;
+        padding: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+    }
+
+    tbody {
+      tr {
+        transition: background 0.2s ease;
+
+        &:nth-child(even) {
+          background: #f5f6fa;
+        }
+
+        &:hover {
+          background: #eef2ff;
+        }
+
+        td {
+          padding: 1rem;
+          border-bottom: 1px solid $border-color;
+
+          &.actions {
+            display: flex;
+            gap: 0.8rem;
+
+            button {
+              border: none;
+              outline: none;
+              border-radius: 6px;
+              padding: 0.5rem 1rem;
+              font-weight: 500;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              box-shadow: $shadow;
+              color: white;
+
+              &.edit-btn {
+                background: $success;
+
+                &:hover {
+                  transform: scale(1.05);
+                  opacity: 0.9;
+                }
+              }
+
+              &.delete-btn {
+                background: $danger;
+
+                &:hover {
+                  transform: scale(1.05);
+                  background: color.adjust($danger, $lightness: -7%);
+                }
+              }
+            }
+          }
+        }
+
+        &:last-child td {
+          border-bottom: none;
+        }
+      }
+
+      tr:last-child td[colspan] {
+        text-align: center;
+        padding: 2rem;
+        color: gray;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .admin-page-container {
+    padding: 1rem;
+
+    table {
+      font-size: 0.9rem;
+    }
+  }
+}

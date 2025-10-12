@@ -1,0 +1,33 @@
+<div class="admin-page-container">
+  <div class="header">
+    <h1>Manage Events</h1>
+    <a routerLink="/admin/events/new" class="add-event-btn">Add New Event</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>{{ event.title }}</td>
+        <td>{{ event.date | date: 'medium' }}</td>
+        <td>{{ event.location }}</td>
+        <td>{{ event.price | currency:'USD' }}</td>
+        <td class="actions">
+          <button><a [routerLink]="['/admin/events/edit', event._id]" class="edit-btn">Edit</a></button>
+          <button class="delete-btn" (click)="deleteEvent(event._id)">Delete</button>
+        </td>
+      </tr>
+      <tr *ngIf="events.length === 0">
+        <td colspan="5">No events found.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,61 @@
+<div class="admin-container">
+  <h1>Admin Dashboard</h1>
+  <p>Welcome, Admin! Here is a summary of your application's activity.</p>
+
+  <div class="admin-buttons">
+    <a routerLink="/admin/events" class="admin-button">Manage Events</a>
+    <a routerLink="/admin/users" class="admin-button">Manage Users</a>
+    <a routerLink="/admin/bookings" class="admin-button">Manage Bookings</a></div>
+
+  <div *ngIf="isLoading; else dashboardContent" class="loading-message">
+    <p>Loading analytics...</p>
+  </div>
+
+  <ng-template #dashboardContent>
+    <div *ngIf="summaryData" class="stats-grid">
+      <div class="stat-card">
+        <h2>Total Revenue</h2>
+        <p>{{ summaryData.totalRevenue | currency:'USD' }}</p>
+      </div>
+      <div class="stat-card">
+        <h2>Total Bookings</h2>
+        <p>{{ summaryData.totalBookings }}</p>
+      </div>
+      <div class="stat-card">
+        <h2>Total Events</h2>
+        <p>{{ summaryData.totalEvents }}</p>
+      </div>
+      <div class="stat-card">
+        <h2>Total Users</h2>
+        <p>{{ summaryData.totalUsers }}</p>
+      </div>
+    </div>
+
+    <div class="recent-activity">
+      <h2>Recent Bookings</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>User</th>
+            <th>Booking Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of summaryData.recentBookings">
+            <td>{{ booking.event?.title || 'N/A' }}</td>
+            <td>{{ booking.user?.name || 'N/A' }}</td>
+            <td>{{ booking.date | date: 'medium' }}</td>
+          </tr>
+          <tr *ngIf="summaryData.recentBookings.length === 0">
+            <td colspan="3">No recent bookings.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-template>
+
+  <div class="admin-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

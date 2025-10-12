@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <a routerLink="/" class="logo">EventHub</a>
+  <span class="spacer"></span>
+
+  <!-- Show if NOT logged in -->
+  <ng-container *ngIf="!authService.isLoggedIn()">
+    <a mat-button routerLink="/login">Login</a>
+    <a mat-button routerLink="/register">Register</a>
+  </ng-container>
+
+  <!-- Show if logged in -->
+  <ng-container *ngIf="authService.isLoggedIn()">
+    <a mat-button routerLink="/profile">My Profile</a>
+    <a mat-button (click)="onLogout()">Logout</a>
+  </ng-container>
+</mat-toolbar>

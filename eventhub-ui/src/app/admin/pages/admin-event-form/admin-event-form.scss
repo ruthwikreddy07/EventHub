@@ -1,0 +1,122 @@
+// Theme colors
+$primary: #4a90e2;
+$secondary: #6c63ff;
+$danger: #ff4b5c;
+$light-bg: #f8f9fc;
+$text-dark: #2b2d42;
+$input-border: #cbd5e0;
+$shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+.admin-form-container {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2rem 2.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: $shadow;
+  font-family: "Poppins", sans-serif;
+  color: $text-dark;
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $secondary;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      input,
+      textarea {
+        padding: 0.75rem 1rem;
+        border: 1px solid $input-border;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+
+        &:focus {
+          border-color: $primary;
+          box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+          outline: none;
+        }
+      }
+
+      textarea {
+        resize: vertical;
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      .submit-btn {
+        background: linear-gradient(135deg, $primary, $secondary);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        border: none;
+        font-weight: 500;
+        cursor: pointer;
+        box-shadow: $shadow;
+        transition: all 0.3s ease;
+
+        &:hover:enabled {
+          transform: translateY(-2px);
+          opacity: 0.9;
+        }
+
+        &:disabled {
+          background: #a0aec0;
+          cursor: not-allowed;
+        }
+      }
+
+      .cancel-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1.5rem;
+        background: #e2e8f0;
+        color: $text-dark;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: #cbd5e0;
+        }
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .admin-form-container {
+    padding: 1.5rem 1rem;
+
+    form {
+      .form-actions {
+        flex-direction: column-reverse;
+        gap: 0.75rem;
+      }
+    }
+  }
+}

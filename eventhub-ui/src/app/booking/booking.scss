@@ -1,0 +1,103 @@
+$primary: #4a90e2;
+$secondary: #6c63ff;
+$success: #00b09b;
+$danger: #ff4b5c;
+$text-dark: #2b2d42;
+$light-bg: #f8f9fc;
+$card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+$border-radius: 12px;
+
+.booking-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: $card-shadow;
+  font-family: "Poppins", sans-serif;
+  color: $text-dark;
+  text-align: center;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $secondary;
+    margin-bottom: 1.5rem;
+  }
+
+  .event-summary {
+    background: #f5f6fa;
+    padding: 1.5rem;
+    border-radius: $border-radius;
+    margin-bottom: 2rem;
+    text-align: left;
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: $primary;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+
+      &.price {
+        font-weight: 600;
+        color: $success;
+      }
+    }
+  }
+
+  .error-message {
+    background: #ffe2e2;
+    color: $danger;
+    padding: 1rem;
+    border-radius: $border-radius;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .confirm-button {
+    background: linear-gradient(135deg, $primary, $secondary);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: $border-radius;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: $card-shadow;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+  }
+
+  ng-template {
+    p {
+      font-size: 1.1rem;
+      color: gray;
+      margin-top: 2rem;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .booking-container {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+
+    .event-summary {
+      padding: 1rem;
+    }
+
+    .confirm-button {
+      width: 100%;
+    }
+  }
+}

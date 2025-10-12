@@ -1,0 +1,26 @@
+<div class="admin-page-container">
+  <h1>Manage Users</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td class="actions">
+          <button class="edit-btn" (click)="toggleRole(user)">
+            {{ user.role === 'admin' ? 'Make User' : 'Make Admin' }}
+          </button>
+          <button class="delete-btn" (click)="deleteUser(user._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

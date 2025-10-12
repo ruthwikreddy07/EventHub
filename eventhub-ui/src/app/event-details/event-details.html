@@ -1,0 +1,26 @@
+<div class="details-container">
+  <div *ngIf="event; else loading">
+    <a routerLink="/" class="back-link">← Back to All Events</a>
+    <img [src]="event.imageUrl || 'https://via.placeholder.com/800x400'" alt="{{ event.title }}" class="event-image">
+    
+    <h1>{{ event.title }}</h1>
+    
+    <div class="event-info">
+      <p><strong>Date:</strong> {{ event.date | date: 'full' }}</p>
+      <p><strong>Location:</strong> {{ event.location }}</p>
+      <p><strong>Price:</strong> {{ event.price | currency:'USD' }}</p>
+      <p><strong>Seats Available:</strong> {{ event.seats }}</p>
+    </div>
+
+    <div class="event-description">
+      <h2>About this event</h2>
+      <p>{{ event.description }}</p>
+    </div>
+
+    <a [routerLink]="['/book', event._id]" class="book-button">Book Tickets</a>
+  </div>
+
+  <ng-template #loading>
+    <p>Loading event details...</p>
+  </ng-template>
+</div>

@@ -1,0 +1,21 @@
+<div class="booking-container">
+  <div *ngIf="event; else loading">
+    <h1>Confirm Your Booking</h1>
+    <div class="event-summary">
+      <h2>{{ event.title }}</h2>
+      <p><strong>Date:</strong> {{ event.date | date: 'fullDate' }}</p>
+      <p><strong>Location:</strong> {{ event.location }}</p>
+      <p class="price"><strong>Price:</strong> {{ event.price | currency:'USD' }}</p>
+    </div>
+
+    <div *ngIf="error" class="error-message">
+      <p>{{ error }}</p>
+    </div>
+
+    <button (click)="proceedToPayment()" class="confirm-button">Confirm & Proceed to Payment</button>
+  </div>
+
+  <ng-template #loading>
+    <p>Loading booking details...</p>
+  </ng-template>
+</div>

@@ -1,0 +1,102 @@
+/* Variables */
+$primary-color: #4a90e2;
+$secondary-color: #ffffff;
+$input-border: #ccc;
+$input-focus-border: $primary-color;
+$button-bg: $primary-color;
+$button-hover-bg: darken($primary-color, 10%);
+$button-color: #fff;
+$background-color: #f5f7fa;
+
+.form-container {
+  max-width: 400px;
+  margin: 5rem auto;
+  padding: 2.5rem;
+  background: $secondary-color;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+
+  h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: $primary-color;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid $input-border;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: border 0.3s;
+
+        &:focus {
+          outline: none;
+          border-color: $input-focus-border;
+          box-shadow: 0 0 5px rgba(74,144,226,0.5);
+        }
+      }
+    }
+
+    button {
+      padding: 0.75rem 1rem;
+      background: $button-bg;
+      color: $button-color;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        background: $button-hover-bg;
+        transform: translateY(-2px);
+      }
+
+      &:disabled {
+        background: lighten($button-bg, 20%);
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .redirect-link {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+
+      &:hover {
+        color: darken($primary-color, 10%);
+      }
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .form-container {
+    margin: 3rem 1rem;
+    padding: 2rem;
+  }
+}
