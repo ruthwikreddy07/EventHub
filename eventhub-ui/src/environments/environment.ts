@@ -3,5 +3,5 @@
 export const environment = {
   production: true,
   // CRITICAL FIX: Use the live Render URL for the backend API
-  apiUrl: 'https://eventhub-backend-iyxp.onrender.com/api' 
+  apiUrl: 'http://localhost:5000/api' 
 };
