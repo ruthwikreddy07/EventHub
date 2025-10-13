@@ -34,15 +34,6 @@ app.use('/api/analytics', require('./routes/analytics.routes'));
 app.use('/api/users', require('./routes/user.routes'));
 app.use('/api/payments', require('./routes/payment.routes'));
 
-// --- 6. SERVE THE ANGULAR FRONTEND ---
-// This tells Express where to find the built Angular files
-app.use(express.static(path.join(__dirname, '../eventhub-ui/dist/eventhub-ui/browser')));
-
-// The "Catch-All" Route: For any request that doesn't match an API route,
-// send back the main index.html file from the Angular app.
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../eventhub-ui/dist/eventhub-ui/browser', 'index.html'));
-});
 
 // --- 7. START THE SERVER ---
 const PORT = process.env.PORT || 5000;
