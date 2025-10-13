@@ -4,13 +4,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
-import { environment } from '../../environments/environment'; // <-- IMPORT
+import { environment } from '../../environments/environment'; // <-- 1. CRITICAL IMPORT
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = `${environment.apiUrl}/auth`; // <-- CORRECTED
+  private apiUrl = `${environment.apiUrl}/auth`; // <-- 2. CRITICAL CHANGE
 
   constructor(private http: HttpClient) {}
 
@@ -19,6 +19,7 @@ export class AuthService {
   }
 
   login(data: any): Observable<any> {
+    // This will now use the correct URL
     return this.http.post(`${this.apiUrl}/login`, data);
   }
 

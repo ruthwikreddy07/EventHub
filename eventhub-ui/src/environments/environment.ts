@@ -1,4 +1,4 @@
-// File: eventhub-ui/src/environments/environment.prod.ts
+// File: eventhub-ui/src/environments/environment.ts
 
 export const environment = {
   production: true,
