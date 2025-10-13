@@ -1,3 +1,49 @@
+/* File: src/app/home/home.scss */
+
+// --- NEW HERO STYLES ---
+.hero-section {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #e9ecef; // A light grey background
+  border-radius: 16px;
+  margin-bottom: 50px;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #6c757d;
+    margin-bottom: 2rem;
+  }
+
+  .hero-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+
+.upcoming-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+// --- Your existing .event-grid and .event-card styles go here ---
+// (No need to change them)
 $primary: #4a90e2;
 $secondary: #6c63ff;
 $text-dark: #2b2d42;

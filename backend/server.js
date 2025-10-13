@@ -1,22 +1,20 @@
 // File: backend/server.js
 
-// --- 1. IMPORTS (Declared only ONCE at the top) ---
+// --- 1. IMPORTS ---
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
+const cors = require('cors'); // <-- Make sure this is here
 const path = require('path');
 require('dotenv').config();
 
-// --- 2. INITIALIZE APP (Declared only ONCE) ---
+// --- 2. INITIALIZE APP ---
 const app = express();
 
 // --- 3. MIDDLEWARE ---
 
-// Configure CORS to trust your live frontend URL
-const corsOptions = {
-  origin: 'https://eventhub-q7g2.onrender.com' // Your specific Render URL
-};
-app.use(cors(corsOptions));
+// THIS IS THE CRITICAL FIX: Use the cors middleware
+// This tells your server to add the necessary headers to allow requests from other origins.
+app.use(cors()); 
 
 // This allows the server to understand JSON from request bodies
 app.use(express.json());
@@ -34,7 +32,6 @@ app.use('/api/analytics', require('./routes/analytics.routes'));
 app.use('/api/users', require('./routes/user.routes'));
 app.use('/api/payments', require('./routes/payment.routes'));
 
-
-// --- 7. START THE SERVER ---
+// --- 6. START THE SERVER ---
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

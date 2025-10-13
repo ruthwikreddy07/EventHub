@@ -1,22 +1,23 @@
 <div class="home-container">
-  <h1>India's Top Events</h1>
-
-  <div class="event-grid" *ngIf="events.length > 0">
-    <div class="event-card" *ngFor="let event of events">
-      <img [src]="event.imageUrl" alt="{{ event.title }}" class="card-image">
-      <div class="card-content">
-        <h2 class="card-title">{{ event.title }}</h2>
-        <p class="card-details">{{ event.date | date: 'fullDate' }}</p>
-        <p class="card-details">{{ event.location }}</p>
-        <p class="card-price">₹{{ event.price }} onwards</p>
-      </div>
-      <div class="card-actions">
-        <a [routerLink]="['/events', event._id]" class="details-button">View Details</a>
-      </div>
-    </div>
+  <div class="hero-section">
+    <h1>Find Your Next Experience</h1>
+    <p>Discover live events, workshops, and concerts happening near you.</p>
+    <a routerLink="/events" class="hero-button">Explore All Events</a>
   </div>
 
-  <div *ngIf="events.length === 0">
-    <p>No events found. Please check back later!</p>
+  <div class="upcoming-section">
+    <h2></h2>
+    <div class="event-grid" *ngIf="!isLoading">
+      <div class="event-card" *ngFor="let event of upcomingEvents">
+        <img [src]="event.imageUrl" alt="{{ event.title }}" class="card-image">
+        <div class="card-content">
+          <h2 class="card-title">{{ event.title }}</h2>
+          <p class="card-details">{{ event.date | date: 'fullDate' }}</p>
+        </div>
+        <div class="card-actions">
+          <a [routerLink]="['/events', event._id]" class="details-button">View Details</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

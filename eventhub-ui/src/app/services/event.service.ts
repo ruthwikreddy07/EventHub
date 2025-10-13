@@ -12,7 +12,9 @@ export class EventService {
   private apiUrl = `${environment.apiUrl}/events`; // <-- CORRECTED
 
   constructor(private http: HttpClient) {}
-
+  getUpcomingEvents(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/upcoming`);
+  }
   getEvents(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }

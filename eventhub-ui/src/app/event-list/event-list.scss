@@ -1,0 +1,115 @@
+/* File: src/app/event-list/event-list.scss */
+
+// --- Main Container and Title ---
+.page-container {
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
+}
+
+// --- Search Bar Styling ---
+.filter-bar {
+  margin-bottom: 30px;
+  
+  input {
+    width: 100%;
+    max-width: 600px; // Limit width on larger screens
+    display: block;
+    margin: 0 auto; // Center the search bar
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 50px; // Pill shape for a modern look
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+    }
+  }
+}
+
+// --- Reusable Event Card Grid Styling (Identical to home.scss for consistency) ---
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.event-card {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.card-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 16px;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.card-details {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin: 4px 0;
+}
+
+.card-price {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.card-actions {
+  padding: 0 16px 16px 16px;
+}
+
+.details-button {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 600;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    background-color: #007bff;
+    color: white;
+  }
+}
+
+// --- Message for no results ---
+.no-results {
+  grid-column: 1 / -1; // Make this message span the full grid width
+  text-align: center;
+  padding: 40px;
+  color: #6c757d;
+  font-size: 1.1rem;
+}

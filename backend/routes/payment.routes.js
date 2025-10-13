@@ -37,12 +37,10 @@ router.post('/create-checkout-session', auth, async (req, res) => {
       success_url: `http://localhost:4200/profile?payment_success=true`,
       cancel_url: `http://localhost:4200/events/${eventId}`,
     });
-
     res.json({ id: session.id });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
 });
-
 module.exports = router;
