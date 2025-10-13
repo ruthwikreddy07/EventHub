@@ -5,6 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors'); 
 const path = require('path'); // <--- Ensure this is here
+const helmet = require('helmet'); 
 require('dotenv').config();
 
 // --- 2. INITIALIZE APP ---
