@@ -10,7 +10,7 @@ declare var Stripe: any; // Declare Stripe to avoid TypeScript errors
   providedIn: 'root'
 })
 export class PaymentService {
-  private apiUrl = 'https://eventhub-api-jrti.onrender.com/api/payments';
+  private apiUrl = 'http://localhost:5000/api/payments';
   private stripe: any;
   // IMPORTANT: Replace with your actual Stripe Publishable Key
   private stripePublicKey = 'pk_test_51SHNejF5LTNnpeMGdojAtcXyA0SGT46z8YWaj92ZsKSTUaGj5EvKUpUW9vg0ZznJqsZgNiOCw2hjOaCpIY09hyby00bohqRpAn'; 

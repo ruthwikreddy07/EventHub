@@ -9,7 +9,7 @@ import { jwtDecode } from 'jwt-decode'; // <-- Import the new library
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://eventhub-api-jrti.onrender.com/api/auth';
+  private apiUrl = 'http://localhost:5000/api/auth';
 
   constructor(private http: HttpClient) {}
 

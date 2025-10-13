@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AnalyticsService {
-  private apiUrl = 'https://eventhub-api-jrti.onrender.com/api'; // FIX IS HERE: added /api
+  private apiUrl = 'http://localhost:5000/api'; // FIX IS HERE: added /api
 
   constructor(private http: HttpClient) {}
 

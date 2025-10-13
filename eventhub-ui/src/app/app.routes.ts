@@ -14,6 +14,7 @@ import { AdminEventManagementComponent } from './admin/pages/admin-event-managem
 import { AdminEventFormComponent } from './admin/pages/admin-event-form/admin-event-form'; 
 import { AdminUserManagementComponent } from './admin/pages/admin-user-management/admin-user-management'; // <-- IMPORT
 import { AdminBookingManagementComponent } from './admin/pages/admin-booking-management/admin-booking-management'; // <-- IMPORT
+import { EventListComponent } from './event-list/event-list'; // <-- IMPORT
 
 
 // Guards
@@ -23,6 +24,7 @@ import { adminGuard } from './admin-guard';
 export const routes: Routes = [
   // ... your other routes
   { path: '', component: HomeComponent },
+  { path: 'events', component: EventListComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'events/:id', component: EventDetailsComponent },

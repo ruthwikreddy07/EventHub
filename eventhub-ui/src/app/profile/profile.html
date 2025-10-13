@@ -1,22 +1,17 @@
 <div class="profile-container">
   <h1>My Bookings</h1>
 
-  <div *ngIf="isLoading" class="loading">
-    <p>Loading your bookings...</p>
-  </div>
+  <div *ngIf="isLoading" class="loading">...</div>
 
-  <div *ngIf="!isLoading && myBookings.length === 0" class="empty-state">
-    <p>You haven't booked any events yet.</p>
-    <a routerLink="/" class="find-events-button">Find Events</a>
-  </div>
+  <div *ngIf="!isLoading && myBookings.length === 0" class="empty-state">...</div>
 
   <div *ngIf="!isLoading && myBookings.length > 0" class="bookings-list">
     <div *ngFor="let booking of myBookings" class="booking-card">
-      <img [src]="booking.event.imageUrl" alt="{{ booking.event.title }}" class="event-image">
+      <img [src]="booking.event?.imageUrl || 'https://placehold.co/600x400/EEE/31343C?text=Event+Image'" alt="{{ booking.event?.title }}" class="event-image">
       <div class="booking-details">
-        <h2>{{ booking.event.title }}</h2>
-        <p><strong>Location:</strong> {{ booking.event.location }}</p>
-        <p><strong>Date:</strong> {{ booking.event.date | date:'fullDate' }}</p>
+        <h2>{{ booking.event?.title || 'Event Not Found' }}</h2>
+        <p><strong>Location:</strong> {{ booking.event?.location || 'N/A' }}</p>
+        <p><strong>Date:</strong> {{ booking.event?.date | date:'fullDate' }}</p>
         <p class="e-pass-info">E-Pass (QR Code coming soon)</p>
       </div>
     </div>
