@@ -12,25 +12,29 @@ require('dotenv').config();
 const app = express();
 
 
+// File: backend/server.js
 
 // --- 3. MIDDLEWARE ---
 
-// **REMOVE OR COMMENT OUT THIS SECTION**
+// CRITICAL FIX: The current helmet.contentSecurityPolicy is too strict 
+// and blocks the Base64 image. We are removing it to allow the image to load.
+
 // app.use(helmet.contentSecurityPolicy({
 //     directives: {
 //         defaultSrc: ["'self'"], 
 //         imgSrc: ["'self'", 'data:'], 
-//         scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+//         scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"], 
 //         styleSrc: ["'self'", "'unsafe-inline'"]
 //     },
 // }));
 
-// Use the default helmet setup, which is less aggressive
-app.use(helmet()); 
+// Use the default helmet setup (less restrictive security headers)
+const app = express(); // Assuming this line is correct
+app.use(helmet()); // <--- USE simple helmet() here or remove it entirely if helmet is causing issues
 app.use(express.json());
 app.use(cors()); 
 
-// ... (rest of the file)
+// ... (Rest of your server.js remains the same) ...
 
 // --- 4. CONNECT TO MONGODB DATABASE ---
 mongoose.connect(process.env.MONGO_URI)
