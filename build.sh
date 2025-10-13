@@ -12,10 +12,9 @@ echo "Installing Angular dependencies..."
 npm install
 
 # 3. Build the Angular app for production. 
-# FINAL CRITICAL FIX: Use 'sh -c' to ensure the shell correctly executes 
-# the executable from the current directory context.
-echo "Building Angular app using sh -c..."
-sh -c './node_modules/.bin/ng build --configuration production'
+# CRITICAL FIX: Running the 'ng' executable directly from the local .bin path.
+echo "Building Angular app using node_modules/.bin/ng..."
+./node_modules/.bin/ng build --configuration production
 
 # 4. Navigate back to the root
 cd ..
