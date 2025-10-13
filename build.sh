@@ -1,30 +1,24 @@
 #!/usr/bin/env bash
-# Exit immediately if a command exits with a non-zero status
 set -o errexit
 
 echo "--- STARTING MONOREPO BUILD ---"
 
-# 1. Navigate to the Angular Frontend folder
+# 1️⃣ Navigate to Angular frontend
 cd eventhub-ui
 
-# 2. Install frontend dependencies
+# 2️⃣ Force install all dependencies including devDependencies
 echo "Installing ALL Angular dependencies (including devDependencies)..."
-# CRITICAL FIX: Ensure ALL dependencies (including Angular CLI) are installed for the build phase
-npm install 
+npm install --include=dev
 
-# 3. Build the Angular app for production. 
-# We revert to the most reliable shell command (npx) now that the executable is guaranteed to exist.
-echo "Building Angular app using npx..."
+# 3️⃣ Build Angular app for production
+echo "Building Angular app using Angular CLI..."
 npx ng build --configuration production
 
-# 4. Navigate back to the root
-cd ..
+# 4️⃣ Return to root and move to backend
+cd ../backend
 
-# 5. Navigate to the Node.js Backend folder
-cd backend
-
-# 6. Install backend dependencies
-echo "Installing Node.js (backend) dependencies..."
+# 5️⃣ Install backend dependencies
+echo "Installing backend dependencies..."
 npm install
 
-echo "--- BUILD COMPLETE ---"
+echo "--- BUILD COMPLETE ✅ ---"
