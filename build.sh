@@ -12,9 +12,10 @@ echo "Installing Angular dependencies..."
 npm install
 
 # 3. Build the Angular app for production. 
-# CRITICAL FIX: Running the 'ng' executable directly from the local .bin path.
-echo "Building Angular app using node_modules/.bin/ng..."
-./node_modules/.bin/ng build --configuration production
+# FINAL FIX: Use 'npm exec' to reliably run the 'ng' executable 
+# from the local node_modules, bypassing all shell pathing issues.
+echo "Building Angular app using npm exec..."
+npm exec -- ng build --configuration production
 
 # 4. Navigate back to the root
 cd ..
