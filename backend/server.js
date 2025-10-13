@@ -4,44 +4,47 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors'); 
-const path = require('path'); // <--- Ensure this is here
+const path = require('path'); 
 const helmet = require('helmet'); 
 require('dotenv').config();
 
 // --- 2. INITIALIZE APP ---
 const app = express();
 
+// =================================================================
+// === CRITICAL FIX: STATIC FILE SERVING MUST BE FIRST IN PRODUCTION ===
+// =================================================================
 
-// File: backend/server.js
+// --- 3. SERVE ANGULAR FRONTEND STATIC FILES (Production Only) ---
+if (process.env.NODE_ENV === 'production') {
+    // 3A. CRITICAL PATH: Where the built Angular files live
+    const frontendPath = path.join(__dirname, '../eventhub-ui/dist/eventhub-ui/browser');
+    
+    // Serve static files (this handles the root files like index.html, JS, CSS)
+    app.use(express.static(frontendPath));
 
-// --- 3. MIDDLEWARE ---
+    // 3B. Fix for the 404: The catch-all route must be defined after express.static() 
+    // but before any other middleware or API routes.
+    app.get('/', (req, res) => {
+        res.sendFile(path.resolve(frontendPath, 'index.html'));
+    });
+}
+// -----------------------------------------------------------------
 
-// CRITICAL FIX: The current helmet.contentSecurityPolicy is too strict 
-// and blocks the Base64 image. We are removing it to allow the image to load.
+// --- 4. GENERAL MIDDLEWARE ---
+// Now that static files are served, we can apply security and JSON parsing.
 
-// app.use(helmet.contentSecurityPolicy({
-//     directives: {
-//         defaultSrc: ["'self'"], 
-//         imgSrc: ["'self'", 'data:'], 
-//         scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"], 
-//         styleSrc: ["'self'", "'unsafe-inline'"]
-//     },
-// }));
-
-// Use the default helmet setup (less restrictive security headers)
-// Assuming this line is correct
-app.use(helmet()); // <--- USE simple helmet() here or remove it entirely if helmet is causing issues
+// Using the simple helmet setup (less restrictive security headers)
+app.use(helmet()); 
 app.use(express.json());
 app.use(cors()); 
 
-// ... (Rest of your server.js remains the same) ...
-
-// --- 4. CONNECT TO MONGODB DATABASE ---
+// --- 5. CONNECT TO MONGODB DATABASE ---
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
-// --- 5. DEFINE ALL API ROUTES ---
+// --- 6. DEFINE ALL API ROUTES ---
 app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/events', require('./routes/event.routes'));
 app.use('/api/bookings', require('./routes/booking.routes'));
@@ -49,31 +52,17 @@ app.use('/api/analytics', require('./routes/analytics.routes'));
 app.use('/api/users', require('./routes/user.routes'));
 app.use('/api/payments', require('./routes/payment.routes'));
 
-// =================================================================
-// === THE CRITICAL DEPLOYMENT FIX IS BELOW THIS LINE ================
-// =================================================================
 
-// --- 6. SERVE ANGULAR FRONTEND STATIC FILES (Production Only) ---
-// This is required to serve the built HTML, CSS, and JS files.
+// --- 7. FALLBACK CATCH-ALL ROUTE (For Angular's deep links like /login) ---
 if (process.env.NODE_ENV === 'production') {
-    // CRITICAL PATH: This tells Express where to find the static Angular files.
-    const frontendPath = path.join(__dirname, '../eventhub-ui/dist/eventhub-ui/browser');
-    
-    // Serve static files from the Angular build output folder
-    app.use(express.static(frontendPath));
-
-    // --- 7. CATCH-ALL ROUTE (For Angular Routing) ---
-    // This handles the root path ('/') and all other non-API requests, 
-    // ensuring Angular's router handles the URL (e.g., /login, /events).
+    // This catches routes like /login that weren't matched by the API routes above.
     app.get('*', (req, res) => {
+        const frontendPath = path.join(__dirname, '../eventhub-ui/dist/eventhub-ui/browser');
         res.sendFile(path.resolve(frontendPath, 'index.html'));
     });
 }
 
 
 // --- 8. START THE SERVER ---
-// Using Render's required port (10000) for the live environment
 const PORT = process.env.PORT || 10000; 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-// Note: I've updated the default PORT to 10000 for Render compatibility.
