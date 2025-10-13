@@ -34,8 +34,8 @@ router.post('/create-checkout-session', auth, async (req, res) => {
       ],
       mode: 'payment',
       // These URLs are where Stripe will redirect the user after payment
-      success_url: `http://localhost:4200/profile?payment_success=true`,
-      cancel_url: `http://localhost:4200/events/${eventId}`,
+      success_url: `${process.env.FRONTEND_URL}/profile?payment_success=true`,
+      cancel_url: `${process.env.FRONTEND_URL}/events/${eventId}`,
     });
     res.json({ id: session.id });
   } catch (err) {
