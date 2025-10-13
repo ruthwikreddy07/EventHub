@@ -8,14 +8,14 @@ echo "--- STARTING MONOREPO BUILD ---"
 cd eventhub-ui
 
 # 2. Install frontend dependencies
-echo "Installing Angular dependencies..."
-npm install
+echo "Installing ALL Angular dependencies (including devDependencies)..."
+# CRITICAL FIX: Ensure ALL dependencies (including Angular CLI) are installed for the build phase
+npm install 
 
 # 3. Build the Angular app for production. 
-# FINAL FIX: Use 'npm exec' to reliably run the 'ng' executable 
-# from the local node_modules, bypassing all shell pathing issues.
-echo "Building Angular app using npm exec..."
-npm exec -- ng build --configuration production
+# We revert to the most reliable shell command (npx) now that the executable is guaranteed to exist.
+echo "Building Angular app using npx..."
+npx ng build --configuration production
 
 # 4. Navigate back to the root
 cd ..
