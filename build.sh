@@ -14,11 +14,28 @@ npm install --include=dev
 echo "Building Angular app using Angular CLI..."
 npx ng build --configuration production
 
-# 4️⃣ Return to root and move to backend
-cd ../backend
+# ... (Lines 1-17, Angular build code is correct) ...
 
-# 5️⃣ Install backend dependencies
-echo "Installing backend dependencies..."
-npm install
+# 4. Navigate back to the root
+cd ..
 
-echo "--- BUILD COMPLETE ✅ ---"
+# 5. Navigate to the Node.js Backend folder
+cd backend
+
+# 6. Install backend dependencies
+# CRITICAL FIX: The backend must have its own package.json, or 
+# you must use the root one. If you only have a root one, 
+# you need to install ALL dependencies from the root.
+echo "Installing Node.js (backend) dependencies..."
+# If your backend uses the root package.json for its dependencies, 
+# you must run npm install from the root.
+
+# **Assuming your backend's dependencies (like 'helmet') are in the ROOT package.json:**
+# Navigate back to the root
+cd .. 
+# Install all dependencies from the root, which includes backend modules
+npm install 
+
+# Your start command will handle running server.js from the backend folder
+
+echo "--- BUILD COMPLETE ---"
