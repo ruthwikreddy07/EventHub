@@ -1,5 +1,6 @@
-// File: src/environments/environment.prod.ts
+// File: eventhub-ui/src/environments/environment.prod.ts
 export const environment = {
   production: true,
-  apiUrl: 'https://eventhub-api-jrti.onrender.com/api' // <-- YOUR LIVE BACKEND URL
+  // Render will run the backend on this URL
+  apiUrl: 'https://eventhubapi-vpsu.onrender.com/api' 
 };
