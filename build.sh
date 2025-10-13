@@ -11,10 +11,13 @@ cd eventhub-ui
 echo "Installing Angular dependencies..."
 npm install
 
-# 3. Build the Angular app for production
-# This creates the 'dist' folder that the backend will serve
+# 3. Build the Angular app for production. 
+# We use 'npx' to ensure the local 'ng' executable is found.
 echo "Building Angular app..."
-npm run build -- --configuration production
+# --- THE FIX IS HERE ---
+npm run build -- --configuration production # <--- Keep this if your package.json uses 'ng build'
+# OR, replace the above line with this if you're not using npm run build:
+# npx ng build --configuration production 
 
 # 4. Navigate back to the root
 cd ..
