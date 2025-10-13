@@ -29,7 +29,7 @@ const app = express();
 // }));
 
 // Use the default helmet setup (less restrictive security headers)
-const app = express(); // Assuming this line is correct
+// Assuming this line is correct
 app.use(helmet()); // <--- USE simple helmet() here or remove it entirely if helmet is causing issues
 app.use(express.json());
 app.use(cors()); 
