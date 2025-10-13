@@ -11,13 +11,20 @@ require('dotenv').config();
 const app = express();
 
 // --- 3. MIDDLEWARE ---
+// **NEW:** Configure Helmet to explicitly allow data URLs for images
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        // Allow the default sources needed for a modern app (scripts, styles, etc.)
+        defaultSrc: ["'self'"], 
+        // Allow data: scheme for images (Base64) to fix the image loading error
+        imgSrc: ["'self'", 'data:'], 
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"], // Adjust as needed
+        styleSrc: ["'self'", "'unsafe-inline'"] // Adjust as needed
+    },
+}));
 
-// This allows the server to understand JSON from request bodies
 app.use(express.json());
-
-// THIS IS THE CRITICAL FIX: Use the cors middleware
-// This tells your server to add the necessary headers to allow requests from other origins.
-app.use(cors()); 
+app.use(cors());
 
 // --- 4. CONNECT TO MONGODB DATABASE ---
 mongoose.connect(process.env.MONGO_URI)
