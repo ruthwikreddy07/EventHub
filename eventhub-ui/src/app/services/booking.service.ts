@@ -2,12 +2,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment'; // <-- IMPORT
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookingService {
-  private apiUrl = 'http://localhost:5000/api/bookings';
+  private apiUrl = `${environment.apiUrl}/bookings`; // <-- CORRECTED
 
   constructor(private http: HttpClient) {}
 
@@ -19,9 +20,7 @@ export class BookingService {
     return this.http.get<any[]>(`${this.apiUrl}/my-bookings`);
   }
 
-  // --- ADD THIS NEW METHOD ---
   getAllBookings(): Observable<any[]> {
-    // The interceptor will add the admin token automatically
     return this.http.get<any[]>(this.apiUrl);
   }
 }

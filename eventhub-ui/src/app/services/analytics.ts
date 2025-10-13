@@ -3,18 +3,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment'; // <-- IMPORT
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root'
 })
 export class AnalyticsService {
-  private apiUrl = 'http://localhost:5000/api'; // FIX IS HERE: added /api
+  private apiUrl = `${environment.apiUrl}/analytics`; // <-- CORRECTED
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  // Method to get the summary data from the backend
-  getSummary(): Observable<any> {
-    // Correctly constructs: https://eventhub-api-jrti.onrender.com/api/summary
-    return this.http.get(`${this.apiUrl}/summary`);
-  }
+  getSummary(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/summary`);
+  }
 }
