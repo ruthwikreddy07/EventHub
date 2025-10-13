@@ -5,7 +5,23 @@ require('dotenv').config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+// File: backend/server.js
+
+const cors = require('cors');
+// ... other require statements
+
+const app = express();
+
+// --- THIS IS THE CRITICAL FIX ---
+// Define the allowed origin (your frontend URL)
+const corsOptions = {
+  origin: 'https://eventhub-q7g2.onrender.com' // <-- REPLACE THIS
+};
+
+// Use the cors middleware with the specified options
+app.use(cors(corsOptions));
+
+// ... rest of your server.js file (app.use(express.json()), routes, etc.)
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
