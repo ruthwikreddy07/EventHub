@@ -12,10 +12,9 @@ echo "Installing Angular dependencies..."
 npm install
 
 # 3. Build the Angular app for production. 
-# FIX: Directly executing 'npx ng build' is the most reliable method 
-# in CI/CD environments like Render to avoid "executable not found" errors.
-echo "Building Angular app directly with npx..."
-npx ng build --configuration production
+# CRITICAL FIX: Running the 'ng' executable directly from the local node_modules path.
+echo "Building Angular app using direct path..."
+./node_modules/@angular/cli/bin/ng build --configuration production
 
 # 4. Navigate back to the root
 cd ..
