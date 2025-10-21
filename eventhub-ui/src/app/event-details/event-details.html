@@ -8,7 +8,7 @@
     <div class="event-info">
       <p><strong>Date:</strong> {{ event.date | date: 'full' }}</p>
       <p><strong>Location:</strong> {{ event.location }}</p>
-      <p><strong>Price:</strong> {{ event.price | currency:'USD' }}</p>
+      <p><strong>Price:</strong>₹{{ event.price }}</p>
       <p><strong>Seats Available:</strong> {{ event.seats }}</p>
     </div>
 

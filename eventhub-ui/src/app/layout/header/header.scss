@@ -1,8 +1,9 @@
-/* Colors */
-$primary-color: #4a90e2;
-$secondary-color: #ffffff;
-$text-color: #fff;
-$hover-color: rgba(255, 255, 255, 0.8);
+/*src/app/layout/header/header.scss */
+/* Updated Color Palette */
+$primary-color: linear-gradient(135deg, #a8edea, #fed6e3); // matches your background
+$secondary-color: #2e2e2e;  // soft charcoal for good text contrast
+$text-color: #2e2e2e;       // dark text works better on light gradients
+$hover-color: #4a90e2;      // subtle accent hover color
 
 mat-toolbar {
   display: flex;
@@ -11,7 +12,8 @@ mat-toolbar {
   padding: 0 2rem;
   background: $primary-color;
   color: $text-color;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px); // modern touch
 
   .logo {
     font-size: 1.8rem;
@@ -35,10 +37,12 @@ mat-toolbar {
     margin-left: 1rem;
     font-weight: 500;
     color: $secondary-color;
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
     transition: all 0.3s ease;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.3);
       color: $hover-color;
       transform: scale(1.05);
     }

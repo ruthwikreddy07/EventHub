@@ -5,7 +5,7 @@
       <h2>{{ event.title }}</h2>
       <p><strong>Date:</strong> {{ event.date | date: 'fullDate' }}</p>
       <p><strong>Location:</strong> {{ event.location }}</p>
-      <p class="price"><strong>Price:</strong> {{ event.price | currency:'USD' }}</p>
+      <p class="price"><strong>Price:</strong>₹{{ event.price }}</p>
     </div>
 
     <div *ngIf="error" class="error-message">

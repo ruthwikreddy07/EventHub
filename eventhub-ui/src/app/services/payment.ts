@@ -11,9 +11,9 @@ declare var Stripe: any;
   providedIn: 'root'
 })
 export class PaymentService {
-  private apiUrl = `${environment.apiUrl}/payments`; // <-- CORRECTED
+  private apiUrl = `${environment.apiUrl}/payments`; 
   private stripe: any;
-  private stripePublicKey = 'pk_test_51SHNejF5LTNnpeMGdojAtcXyA0SGT46z8YWaj92ZsKSTUaGj5EvKUpUW9vg0ZznJqsZgNiOCw2hjOaCpIY09hyby00bohqRpAn'; 
+  private stripePublicKey = 'pk_test_51SKDHWF8DvCudtHCHWp8j9mywCvG95ssFzqTp7ylc31we02SYMxSogPBhNmzdslAbdjfVRKeBywuG4RmEaFZVks1005iLDEabJ'; 
 
   constructor(private http: HttpClient) {
     this.stripe = Stripe(this.stripePublicKey);

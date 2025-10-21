@@ -1,166 +1,260 @@
-/* File: src/app/home/home.scss */
 
-// --- NEW HERO STYLES ---
+/* =========================================================
+   Home Page Styles — Ultra Modern & Attractive
+   ========================================================= */
+
+// 🎨 Color Palette
+$primary: #635bff;        // Vibrant indigo
+$secondary: #00c6ff;      // Electric cyan
+$accent: #ff8c00;         // Warm orange
+$text-dark: #1b1b2f;      // Deep navy
+$text-light: #a0a5ba;     // Muted gray
+$light-bg: #f8f9fb;       // Clean off-white
+$gradient: linear-gradient(135deg, $primary, $secondary);
+$radius: 16px;
+$shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+$shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.15);
+
+// 💎 Base Container
+.home-container {
+  font-family: 'Poppins', sans-serif;
+  background:  linear-gradient(135deg, #a8edea, #fed6e3); /* A very light grey background */
+  border-radius: 30px;
+  color: $text-dark;
+  overflow-x: hidden;
+}
+
+// 🦋 Hero Section
 .hero-section {
+  position: relative;
+  background: 
+    linear-gradient(rgba(27, 27, 47, 0.6), rgba(27, 27, 47, 0.7)),
+    url('https://cdn.pixabay.com/photo/2016/11/23/15/48/audience-1853662_1280.jpg')
+      center/cover no-repeat;
+  background-attachment: fixed;
+  border-radius: 30px;
   text-align: center;
-  padding: 60px 20px;
-  background-color: #e9ecef; // A light grey background
-  border-radius: 16px;
-  margin-bottom: 50px;
+  padding: 180px 20px 250px;
+  color: #fff;
+  overflow: hidden;
 
-  h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.1), transparent 70%);
+    animation: floatGlow 12s linear infinite;
+    z-index: 0;
   }
 
-  p {
-    font-size: 1.2rem;
-    color: #6c757d;
-    margin-bottom: 2rem;
-  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeInUp 1.2s ease-out forwards;
 
-  .hero-button {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 8px;
-    transition: background-color 0.2s;
+    h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      line-height: 1.2;
+    }
 
-    &:hover {
-      background-color: #0056b3;
+    p {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: $gradient;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+      &:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: $shadow-hover;
+        background: linear-gradient(135deg, $secondary, $primary);
+      }
     }
   }
 }
 
-.upcoming-section h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 24px;
-}
+// 🔹 Featured Events Section
+.featured-section {
+  padding: 5rem 2rem;
+  text-align: center;
 
-// --- Your existing .event-grid and .event-card styles go here ---
-// (No need to change them)
-$primary: #4a90e2;
-$secondary: #6c63ff;
-$text-dark: #2b2d42;
-$light-bg: #f8f9fc;
-$card-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-$border-radius: 12px;
-
-.home-container {
-  max-width: 1200px;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
-  font-family: "Poppins", sans-serif;
-  color: $text-dark;
-
-  h1 {
-    font-size: 2.5rem;
+  h2 {
+    font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 2rem;
-    text-align: center;
-    color: $primary;
+    margin-bottom: 3rem;
+    color: $text-dark;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: $accent;
+      margin: 12px auto 0 auto;
+      border-radius: 2px;
+    }
   }
 
   .event-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-
-    .event-card {
-      background: white;
-      border-radius: $border-radius;
-      overflow: hidden;
-      box-shadow: $card-shadow;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-      }
-
-      .card-image {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-      }
-
-      .card-content {
-        padding: 1rem;
-
-        .card-title {
-          font-size: 1.3rem;
-          font-weight: 600;
-          margin-bottom: 0.5rem;
-          color: $secondary;
-        }
-
-        .card-details {
-          font-size: 0.95rem;
-          margin-bottom: 0.25rem;
-          color: #555;
-        }
-
-        .card-price {
-          margin-top: 0.5rem;
-          font-weight: 600;
-          color: $primary;
-        }
-      }
-
-      .card-actions {
-        margin-top: auto;
-        padding: 1rem;
-        text-align: center;
-
-        .details-button {
-          display: inline-block;
-          background: linear-gradient(135deg, $primary, $secondary);
-          color: white;
-          font-weight: 600;
-          padding: 0.5rem 1.5rem;
-          border-radius: $border-radius;
-          text-decoration: none;
-          transition: all 0.3s ease;
-
-          &:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-          }
-        }
-      }
-    }
-  }
-
-  p {
-    text-align: center;
-    font-size: 1.1rem;
-    margin-top: 2rem;
-    color: gray;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2.5rem;
   }
 }
 
-// Responsive adjustments
-@media (max-width: 768px) {
-  .home-container {
-    h1 {
-      font-size: 2rem;
+// 🔹 Event Card
+.event-card {
+  background: rgba(255, 255, 255, 0.85);;       // Glassy silver look
+  backdrop-filter: blur(8px);                  // Frosted effect
+  border-radius: $radius;
+  border: 1px solid rgba(99, 91, 255, 0.15);  // Subtle accent border
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);   // Soft shadow
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+  animation: fadeInUp 0.7s ease-out forwards;
+  animation-delay: calc(var(--delay) * 80ms);
+
+  &:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.15);
+    background: rgba(255, 255, 255, 0.95);
+    
+    .card-image {
+      transform: scale(1.05);
+    }
+  }
+
+  .card-date-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-color: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    padding: 6px 12px;
+    font-weight: 700;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+
+    .month {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: $secondary;
     }
 
-    .event-grid {
-      gap: 1.5rem;
+    .day {
+      display: block;
+      font-size: 1.4rem;
+      color: $text-dark;
+    }
+  }
 
-      .event-card {
-        .card-image {
-          height: 160px;
-        }
+  .card-image {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    border-bottom: 1px solid #eee;
+  }
+
+  .card-content {
+    padding: 1.25rem 1.5rem;
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: $text-dark;
+      transition: color 0.3s ease;
+    }
+
+    .card-details {
+      font-size: 0.95rem;
+      color: $text-light;
+    }
+  }
+
+  .card-actions {
+    padding: 1rem 1.5rem 1.5rem;
+    text-align: center;
+
+    .details-button {
+      display: inline-block;
+      padding: 0.65rem 1.8rem;
+      background: $gradient;
+      color: white;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: $shadow-hover;
+        background: linear-gradient(135deg, $secondary, $primary);
       }
     }
   }
+}
+
+
+// 🔹 Explore Section
+.explore-section {
+  text-align: center;
+  padding: 80px 20px;
+
+  h2 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  .explore-button {
+    display: inline-block;
+    padding: 18px 44px;
+    background: linear-gradient(135deg, $primary, $secondary);
+    color: #fff;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: $shadow;
+
+    &:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: $shadow-hover;
+      background: linear-gradient(135deg, $secondary, $primary);
+    }
+  }
+}
+
+// ✨ Animations
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

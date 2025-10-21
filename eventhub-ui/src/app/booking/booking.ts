@@ -33,6 +33,7 @@ export class BookingComponent implements OnInit {
 
   proceedToPayment(): void {
     if (!this.eventId) return;
+    localStorage.setItem('pendingBookingEventId', this.eventId);
 
     this.paymentService.createCheckoutSession(this.eventId).subscribe({
       // Add explicit 'any' type to fix TS7006 error

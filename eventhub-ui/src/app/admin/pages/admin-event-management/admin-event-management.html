@@ -19,7 +19,7 @@
         <td>{{ event.title }}</td>
         <td>{{ event.date | date: 'medium' }}</td>
         <td>{{ event.location }}</td>
-        <td>{{ event.price | currency:'USD' }}</td>
+        <td>₹{{ event.price }}</td>
         <td class="actions">
           <button><a [routerLink]="['/admin/events/edit', event._id]" class="edit-btn">Edit</a></button>
           <button class="delete-btn" (click)="deleteEvent(event._id)">Delete</button>

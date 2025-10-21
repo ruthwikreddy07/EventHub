@@ -8,20 +8,22 @@ import { EventService } from '../services/event.service';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink], // We'll add HeroBannerComponent here soon
+  imports: [CommonModule, RouterLink],
   templateUrl: './home.html',
   styleUrls: ['./home.scss']
 })
 export class HomeComponent implements OnInit {
-  upcomingEvents: any[] = []; // Renamed for clarity
+  // This will hold our 12 events for the grid
+  featuredEvents: any[] = []; 
   isLoading = true;
 
   constructor(private eventService: EventService) {}
 
   ngOnInit(): void {
-    // Call the new service method
-    this.eventService.getUpcomingEvents().subscribe(data => {
-      this.upcomingEvents = data;
+    // We call the main getEvents() method
+    this.eventService.getEvents().subscribe(allEvents => {
+      // Then we take the first 12 items for our homepage grid
+      this.featuredEvents = allEvents.slice(0, 6);
       this.isLoading = false;
     });
   }
