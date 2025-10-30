@@ -1,4 +1,3 @@
-/* File: src/app/home/home.scss */
 /* =========================================================
    Home Page Styles — Ultra Modern & Attractive
    ========================================================= */
@@ -116,6 +115,7 @@ $shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.15);
     }
   }
 
+  // --- THIS IS THE FIX ---
   .event-grid {
     display: grid;
     gap: 2.5rem;
@@ -123,12 +123,15 @@ $shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.15);
     // Default to 1 column on mobile
     grid-template-columns: repeat(1, 1fr);
 
-    // Switch to 2 columns on tablets and desktops
+    // Switch to 2 columns on tablets
     @media (min-width: 600px) {
       grid-template-columns: repeat(2, 1fr);
     }
     
-    // THE 4-COLUMN BREAKPOINT THAT WAS CAUSING THE PROBLEM HAS BEEN REMOVED
+    // Switch to 4 columns on desktops (for your 4x3 grid)
+    @media (min-width: 960px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }
 
@@ -207,7 +210,6 @@ $shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.15);
   .card-actions {
     padding: 1rem 1.5rem 1.5rem;
     text-align: center;
-    margin-top: auto;
 
     .details-button {
       display: inline-block;
@@ -217,7 +219,6 @@ $shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.15);
       border-radius: 50px;
       font-weight: 600;
       transition: all 0.3s ease;
-      text-decoration: none;
 
       &:hover {
         transform: translateY(-3px) scale(1.05);
@@ -269,3 +270,4 @@ $shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.15);
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
