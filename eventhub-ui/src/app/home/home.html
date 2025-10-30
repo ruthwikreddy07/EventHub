@@ -1,23 +1,20 @@
-<div class="home-container">
-  <div class="hero-section">
-    <div class="hero-content">
-      <h1>Find Your Next Unforgettable Experience</h1>
-      <p>Discover and book tickets for the best live events, workshops, and concerts.</p>
-    </div>
+<div class="hero-section">
+  <div class="hero-content">
+    <h1>Find Your Next Unforgettable Experience</h1>
+    <p>Discover and book tickets for the best live events, workshops, and concerts.</p>
   </div>
+</div>
 
+<div class="content-wrapper">
   <div class="featured-section">
     <h2>Trending Events</h2>
     <div class="event-grid" *ngIf="!isLoading">
       <div class="event-card" *ngFor="let event of featuredEvents; let i = index" [style.--delay.]="i">
-
         <div class="card-date-badge">
           <span class="month">{{ event.date | date: 'MMM' }}</span>
           <span class="day">{{ event.date | date: 'd' }}</span>
         </div>
-
         <img [src]="event.imageUrl" alt="{{ event.title }}" class="card-image">
-
         <div class="card-content">
           <h3 class="card-title">{{ event.title }}</h3>
           <p class="card-details">{{ event.location }}</p>

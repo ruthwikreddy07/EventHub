@@ -1,15 +1,14 @@
-
 /* =========================================================
    Home Page Styles — Ultra Modern & Attractive
    ========================================================= */
 
 // 🎨 Color Palette
-$primary: #635bff;        // Vibrant indigo
+$primary: #635bff;       // Vibrant indigo
 $secondary: #00c6ff;      // Electric cyan
-$accent: #ff8c00;         // Warm orange
+$accent: #ff8c00;        // Warm orange
 $text-dark: #1b1b2f;      // Deep navy
-$text-light: #a0a5ba;     // Muted gray
-$light-bg: #f8f9fb;       // Clean off-white
+$text-light: #a0a5ba;    // Muted gray
+$light-bg: #f8f9fb;      // Clean off-white
 $gradient: linear-gradient(135deg, $primary, $secondary);
 $radius: 16px;
 $shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
@@ -116,19 +115,32 @@ $shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.15);
     }
   }
 
+  // --- THIS IS THE FIX ---
   .event-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2.5rem;
+    
+    // Default to 1 column on mobile
+    grid-template-columns: repeat(1, 1fr);
+
+    // Switch to 2 columns on tablets
+    @media (min-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    // Switch to 4 columns on desktops (for your 4x3 grid)
+    @media (min-width: 960px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }
 
 // 🔹 Event Card
 .event-card {
-  background: rgba(255, 255, 255, 0.85);;       // Glassy silver look
+  background: rgba(255, 255, 255, 0.85);;      // Glassy silver look
   backdrop-filter: blur(8px);                  // Frosted effect
   border-radius: $radius;
-  border: 1px solid rgba(99, 91, 255, 0.15);  // Subtle accent border
+  border: 1px solid rgba(99, 91, 255, 0.15); // Subtle accent border
   box-shadow: 0 12px 24px rgba(0,0,0,0.08);   // Soft shadow
   overflow: hidden;
   position: relative;
@@ -258,3 +270,4 @@ $shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.15);
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+

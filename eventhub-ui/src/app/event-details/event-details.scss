@@ -31,9 +31,8 @@ $border-radius: 12px;
 
   .event-image {
     width: 100%;
-    height: auto;
-    max-height: 400px;
-    object-fit: cover;
+    aspect-ratio: 16 / 9; // Forces a consistent widescreen shape
+    object-fit: cover;     // Ensures the image fills the space without stretching
     border-radius: $border-radius;
     margin-bottom: 2rem;
     box-shadow: $card-shadow;
