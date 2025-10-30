@@ -123,11 +123,12 @@ $shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.15);
     // Default to 1 column on mobile
     grid-template-columns: repeat(1, 1fr);
 
-    // Switch to 2 columns on tablets
+    // Switch to 2 columns on tablets and desktops
     @media (min-width: 600px) {
       grid-template-columns: repeat(2, 1fr);
     }
     
+    // The 4-column breakpoint has been removed.
   }
 }
 
@@ -206,6 +207,7 @@ $shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.15);
   .card-actions {
     padding: 1rem 1.5rem 1.5rem;
     text-align: center;
+    margin-top: auto; // This is good, it keeps the button at the bottom
 
     .details-button {
       display: inline-block;
@@ -215,6 +217,7 @@ $shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.15);
       border-radius: 50px;
       font-weight: 600;
       transition: all 0.3s ease;
+      text-decoration: none; // Added to ensure it's not underlined
 
       &:hover {
         transform: translateY(-3px) scale(1.05);
