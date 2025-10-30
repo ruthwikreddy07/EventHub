@@ -9,8 +9,9 @@ const eventSchema = new Schema({
   date: { type: Date, required: true },
   location: { type: String, required: true },
   price: { type: Number, required: true },
-  seats: { type: Number, required: true }, // <-- THIS IS THE RULE
-  imageUrl: { type: String }
+  seats: { type: Number, required: true },
+  imageUrl: { type: String },
+  bannerImageUrl: { type: String } // <-- NEW FIELD ADDED
 });
 
 module.exports = mongoose.model('Event', eventSchema);

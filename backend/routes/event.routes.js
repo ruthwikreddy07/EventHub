@@ -1,18 +1,12 @@
 // File: backend/routes/event.routes.js
 
-// --- 1. IMPORTS ---
 const express = require('express');
 const router = express.Router();
 const Event = require('../models/event.model');
 const auth = require('../middleware/auth');
 const admin = require('../middleware/admin');
 
-// ------------------------------------------------------------------
-
-// --- 2. PUBLIC ROUTES (for all users) ---
-
-// GET ALL EVENTS (Public)
-// Endpoint: GET /api/events
+// --- PUBLIC ROUTES (No changes needed here) ---
 router.get('/', async (req, res) => {
     try {
         const events = await Event.find().sort({ date: 1 });
@@ -23,10 +17,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// REMOVED: The '/upcoming' route has been removed to eliminate the routing conflict.
-
-// GET SINGLE EVENT BY ID (Public)
-// Endpoint: GET /api/events/:id
 router.get('/:id', async (req, res) => {
     try {
         const event = await Event.findById(req.params.id);
@@ -37,21 +27,19 @@ router.get('/:id', async (req, res) => {
     } catch (err) {
         console.error(err.message);
         if (err.kind === 'ObjectId') {
-            // This catches the 'Cast to ObjectId failed' error for an invalid ID format
             return res.status(404).json({ msg: 'Event not found (Invalid ID)' });
         }
         res.status(500).send('Server Error');
     }
 });
 
-// --- 3. ADMIN-ONLY ROUTES (protected by middleware) ---
+// --- ADMIN-ONLY ROUTES ---
 
-// CREATE EVENT (Admin Only)
-// Endpoint: POST /api/events
+// CREATE EVENT (Your existing code was already correct)
 router.post('/', [auth, admin], async (req, res) => {
-    const { title, description, date, location, price, seats, imageUrl } = req.body;
+    const { title, description, date, location, price, seats, imageUrl, bannerImageUrl } = req.body;
     try {
-        const newEvent = new Event({ title, description, date, location, price, seats, imageUrl });
+        const newEvent = new Event({ title, description, date, location, price, seats, imageUrl, bannerImageUrl });
         const event = await newEvent.save();
         res.json(event);
     } catch (err) {
@@ -60,11 +48,14 @@ router.post('/', [auth, admin], async (req, res) => {
     }
 });
 
-// UPDATE AN EVENT (Admin Only)
-// Endpoint: PUT /api/events/:id
+// UPDATE AN EVENT (This is the corrected part)
 router.put('/:id', [auth, admin], async (req, res) => {
-    const { title, description, date, location, price, seats, imageUrl } = req.body;
-    const eventFields = { title, description, date, location, price, seats, imageUrl };
+    // CRITICAL FIX: Add bannerImageUrl to the destructuring
+    const { title, description, date, location, price, seats, imageUrl, bannerImageUrl } = req.body;
+    
+    // CRITICAL FIX: Add bannerImageUrl to the fields to be updated
+    const eventFields = { title, description, date, location, price, seats, imageUrl, bannerImageUrl };
+
     try {
         let event = await Event.findById(req.params.id);
         if (!event) {
@@ -82,15 +73,13 @@ router.put('/:id', [auth, admin], async (req, res) => {
     }
 });
 
-// DELETE AN EVENT (Admin Only)
-// Endpoint: DELETE /api/events/:id
+// DELETE AN EVENT (No changes needed)
 router.delete('/:id', [auth, admin], async (req, res) => {
     try {
         const event = await Event.findById(req.params.id);
         if (!event) {
             return res.status(404).json({ msg: 'Event not found' });
         }
-        // Use deleteOne for Mongoose
         await Event.deleteOne({ _id: req.params.id }); 
         res.json({ msg: 'Event removed successfully' });
     } catch (err) {
@@ -99,5 +88,4 @@ router.delete('/:id', [auth, admin], async (req, res) => {
     }
 });
 
-// --- 4. EXPORT ROUTER ---
 module.exports = router;

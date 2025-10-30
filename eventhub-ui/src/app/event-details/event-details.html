@@ -1,7 +1,8 @@
 <div class="details-container">
   <div *ngIf="event; else loading">
-    <a routerLink="/" class="back-link">← Back to All Events</a>
-    <img [src]="event.imageUrl || 'https://via.placeholder.com/800x400'" alt="{{ event.title }}" class="event-image">
+    <a routerLink="/events" class="back-link">← Back to All Events</a>
+
+    <img [src]="event.bannerImageUrl || event.imageUrl || 'https://via.placeholder.com/800x400'" alt="{{ event.title }}" class="event-image">
     
     <h1>{{ event.title }}</h1>
     

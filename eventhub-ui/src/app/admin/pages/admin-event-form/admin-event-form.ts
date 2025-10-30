@@ -31,7 +31,8 @@ export class AdminEventFormComponent implements OnInit {
       location: ['', Validators.required],
       price: [0, [Validators.required, Validators.min(0)]],
       seats: [0, [Validators.required, Validators.min(0)]],
-      imageUrl: ['']
+      imageUrl: [''],
+      bannerImageUrl: ['']
     });
   }
 
