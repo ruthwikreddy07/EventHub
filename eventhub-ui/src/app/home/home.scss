@@ -128,10 +128,6 @@ $shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.15);
       grid-template-columns: repeat(2, 1fr);
     }
     
-    // Switch to 4 columns on desktops (for your 4x3 grid)
-    @media (min-width: 960px) {
-      grid-template-columns: repeat(4, 1fr);
-    }
   }
 }
 
