@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     // We call the main getEvents() method
     this.eventService.getEvents().subscribe(allEvents => {
       // Then we take the first 12 items for our homepage grid
-      this.featuredEvents = allEvents.slice(0, 6);
+      this.featuredEvents = allEvents.slice(0, 8);
       this.isLoading = false;
     });
   }
