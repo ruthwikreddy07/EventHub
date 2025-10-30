@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../../services/auth.service';
+import { Subscription } from 'rxjs'; // Import Subscription
 
 @Component({
   selector: 'app-header',
@@ -13,13 +14,32 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './header.html',
   styleUrls: ['./header.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnDestroy {
+  
+  isLoggedIn = false;
+  isAdmin = false;
+  private authSubscription!: Subscription;
 
-  constructor(public authService: AuthService, private router: Router) {}
+  // Make authService private, we'll use the properties above
+  constructor(private authService: AuthService, private router: Router) {}
 
-  // Method to logout and navigate to home
+  ngOnInit(): void {
+    // Start listening to the auth service's broadcast
+    this.authSubscription = this.authService.currentUser.subscribe(user => {
+      this.isLoggedIn = !!user;
+      this.isAdmin = user?.role === 'admin';
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Stop listening when the component is destroyed to prevent memory leaks
+    this.authSubscription.unsubscribe();
+  }
+
   onLogout() {
     this.authService.logout();
-    this.router.navigate(['/']); // navigate to home page
+    // The navigation is now handled inside the authService.logout() method
+    // but keeping this as a fallback is fine.
+    this.router.navigate(['/']); 
   }
 }
