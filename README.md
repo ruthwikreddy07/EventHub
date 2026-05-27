@@ -5,7 +5,6 @@
     <br />
     Discover events, book tickets securely with Stripe, and manage resources via a powerful, real-time Admin Dashboard.
     <br /><br />
-    <a href="https://eventhub-backend-iyxp.onrender.com"><strong>Live Backend API »</strong></a>
   </p>
 </p>
 
