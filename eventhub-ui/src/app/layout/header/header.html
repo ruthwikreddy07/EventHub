@@ -4,12 +4,14 @@
 
   <ng-container *ngIf="!isLoggedIn">
     <a mat-button routerLink="/">Home</a>
+    <a mat-button routerLink="/events">Events</a>
     <a mat-button routerLink="/login">Login</a>
     <a mat-button routerLink="/register">Register</a>
   </ng-container>
 
   <ng-container *ngIf="isLoggedIn">
     <a mat-button routerLink="/">Home</a>
+    <a mat-button routerLink="/events">Events</a>
     
     <a mat-button routerLink="/admin" *ngIf="isAdmin">Admin Dashboard</a>
     

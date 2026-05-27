@@ -1,7 +1,5 @@
-// File: eventhub-ui/src/environments/environment.ts
-
 export const environment = {
-  production: true,
-  apiUrl: 'https://eventhub-backend-iyxp.onrender.com/api',
+  production: false,
+  apiUrl: 'http://localhost:5000/api',
   stripePublicKey: 'pk_test_51SKDHWF8DvCudtHCHWp8j9mywCvG95ssFzqTp7ylc31we02SYMxSogPBhNmzdslAbdjfVRKeBywuG4RmEaFZVks1005iLDEabJ'
 };

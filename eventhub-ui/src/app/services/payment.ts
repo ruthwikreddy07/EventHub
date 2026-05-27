@@ -13,7 +13,7 @@ declare var Stripe: any;
 export class PaymentService {
   private apiUrl = `${environment.apiUrl}/payments`; 
   private stripe: any;
-  private stripePublicKey = 'pk_test_51SKDHWF8DvCudtHCHWp8j9mywCvG95ssFzqTp7ylc31we02SYMxSogPBhNmzdslAbdjfVRKeBywuG4RmEaFZVks1005iLDEabJ'; 
+  private stripePublicKey = environment.stripePublicKey; 
 
   constructor(private http: HttpClient) {
     this.stripe = Stripe(this.stripePublicKey);
